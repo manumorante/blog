@@ -1,6 +1,6 @@
 import DateFormatter from "./date-formatter"
-import CoverImage from "./cover-image"
 import Link from "next/link"
+import Image from "next/image"
 
 type Props = {
   title: string
@@ -10,29 +10,46 @@ type Props = {
   slug: string
 }
 
-const PostPreview = ({ title, coverImage, date, excerpt, slug }: Props) => {
+export default function PostPreview({
+  title,
+  coverImage,
+  date,
+  excerpt,
+  slug,
+}: Props) {
   return (
     <div>
-      {coverImage && (
-        <div className="mb-5">
-          <CoverImage slug={slug} title={title} src={coverImage} />
+      <div className="sm:grid grid-cols-2 gap-20">
+        <div>
+          <h3 className="text-5xl lg:text-5xl font-bold tracking-tighter leading-none mb-3">
+            <Link
+              as={`/posts/${slug}`}
+              href="/posts/[slug]"
+              className="sm:hover:underline"
+            >
+              {title}
+            </Link>
+          </h3>
+          <div className="text-lg opacity-60 mb-4">
+            <DateFormatter dateString={date} />
+          </div>
+          {/* <p className="text-xl leading-relaxed mb-4">{excerpt}</p> */}
         </div>
-      )}
-      <h3 className="text-5xl lg:text-5xl font-bold tracking-tighter leading-none mb-3">
-        <Link
-          as={`/posts/${slug}`}
-          href="/posts/[slug]"
-          className="sm:hover:underline"
-        >
-          {title}
-        </Link>
-      </h3>
-      <div className="text-lg opacity-60 mb-4">
-        <DateFormatter dateString={date} />
+
+        <div className="bg-neutral-800/50 rounded-xl">
+          {coverImage && (
+            <Link as={`/posts/${slug}`} href="/posts/[slug]">
+              <Image
+                src={coverImage}
+                alt={`Cover Image for ${title}`}
+                className={"w-full h-full max-h-52 object-cover rounded-xl"}
+                width={500}
+                height={500}
+              />
+            </Link>
+          )}
+        </div>
       </div>
-      <p className="text-xl leading-relaxed mb-4">{excerpt}</p>
     </div>
   )
 }
-
-export default PostPreview

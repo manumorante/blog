@@ -1,21 +1,29 @@
 import DateFormatter from "./date-formatter"
-import CoverImage from "./cover-image"
+import Image from "next/image"
 
 type Props = {
   title: string
-  coverImage: string
+  coverImage?: string
   date: string
 }
 
-const PostHeader = ({ title, coverImage, date }: Props) => {
+export default function PostHeader({ title, coverImage, date }: Props) {
   return (
     <>
       <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
         {title}
       </h1>
-      <div className="mb-8 md:mb-16 sm:mx-0">
-        <CoverImage title={title} src={coverImage} />
-      </div>
+
+      {coverImage && (
+        <Image
+          src={coverImage}
+          alt={`Cover Image for ${title}`}
+          className={"w-full h-full max-h-52 object-cover rounded-xl mb-20"}
+          width={500}
+          height={500}
+        />
+      )}
+
       <div className="max-w-2xl mx-auto">
         <div className="mb-6 text-lg">
           <DateFormatter dateString={date} />
@@ -24,5 +32,3 @@ const PostHeader = ({ title, coverImage, date }: Props) => {
     </>
   )
 }
-
-export default PostHeader

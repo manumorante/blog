@@ -1,8 +1,6 @@
 import { useRouter } from "next/router"
 import ErrorPage from "next/error"
-import Container from "../../components/container"
 import PostBody from "../../components/post-body"
-import Header from "../../components/header"
 import PostHeader from "../../components/post-header"
 import Layout from "../../components/layout"
 import { getPostBySlug, getAllPosts } from "../../lib/api"
@@ -13,35 +11,37 @@ import { Post } from "../../types"
 export default function Post({ post }: { post: Post }) {
   const router = useRouter()
   const title = `${post.title} | Manu Morante`
+
+  // Error 404
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+
+  // Loading
+  if (router.isFallback) {
+    return <p className="m-5 text-5xl">Loading…</p>
+  }
+
   return (
-    <Layout>
-      <Container>
-        <Header />
-        {router.isFallback ? (
-          <p className="m-5 text-5xl">Loading…</p>
-        ) : (
-          <>
-            <article className="mb-32">
-              <Head>
-                <title>{title}</title>
-                {post.ogImage?.url && (
-                  <meta property="og:image" content={post.ogImage.url} />
-                )}
-              </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-              />
-              <PostBody content={post.content} />
-            </article>
-          </>
+    <>
+      <Head>
+        <title>{title}</title>
+        {post.ogImage?.url && (
+          <meta property="og:image" content={post.ogImage.url} />
         )}
-      </Container>
-    </Layout>
+      </Head>
+
+      <Layout>
+        <article className="mb-32">
+          <PostHeader
+            title={post.title}
+            coverImage={post.coverImage}
+            date={post.date}
+          />
+          <PostBody content={post.content} />
+        </article>
+      </Layout>
+    </>
   )
 }
 

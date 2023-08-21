@@ -6,3 +6,9 @@ html,
 body {
   @apply bg-neutral-900 text-neutral-400;
 }
+
+@layer components {
+  .Container {
+    @apply w-full max-w-4xl mx-auto px-8;
+  }
+}

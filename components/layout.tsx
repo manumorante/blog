@@ -1,6 +1,6 @@
 import Footer from "./footer"
 import Header from "./header"
-import Meta from "./meta"
+import Head from "next/head"
 
 type Props = {
   children: React.ReactNode
@@ -9,9 +9,17 @@ type Props = {
 const Layout = ({ children }: Props) => {
   return (
     <>
-      <Meta />
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        <meta
+          name="description"
+          content="The blog of a web developer named Manu Morante."
+        />
+      </Head>
+
       <Header />
-      <main>{children}</main>
+      <main className="Container">{children}</main>
       <Footer />
     </>
   )
