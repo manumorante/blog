@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+html,
+body {
   @apply bg-neutral-900 text-neutral-400;
 }

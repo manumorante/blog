@@ -5,7 +5,7 @@ const Intro = () => {
         <span className="opacity-60">dev</span>
         <span>stories</span>
       </h1>
-      <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
+      <h4 className="text-center md:text-left text-lg opacity-60 mt-5 md:pl-8">
         Somewhere I had to put my thoughts.
       </h4>
     </section>

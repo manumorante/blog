@@ -1,27 +1,27 @@
 import Container from "./container"
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-neutral-800">
+    <footer className="bg-neutral-950">
       <Container>
         <div className="py-28 flex flex-col lg:flex-row items-center">
-          <h3 className="text-4xl lg:text-[2.5rem] font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
-            About me
+          <h3 className="opacity-60 text-4xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
+            Tengo unos proyectos en
           </h3>
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
+          <div className="flex flex-col gap-3 lg:flex-row justify-center items-center text-xl">
             <a
               target="_blank"
               href="https://manumorante.com"
-              className="mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-200 transition-colors mb-6 lg:mb-0"
+              className="font-bold sm:hover:underline"
             >
-              Works
+              Mi web personal
             </a>
             <a
               href="https://github.com/manumorante"
               target="_blank"
-              className="mx-3 font-bold hover:underline"
+              className="font-bold sm:hover:underline"
             >
-              GitHub
+              Mira el código en GitHub
             </a>
           </div>
         </div>
@@ -29,5 +29,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer

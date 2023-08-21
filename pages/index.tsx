@@ -1,40 +1,37 @@
-import Container from "../components/container"
-import MoreStories from "../components/more-stories"
-import HeroPost from "../components/hero-post"
-import Intro from "../components/intro"
-import Layout from "../components/layout"
 import { getAllPosts } from "../lib/api"
+import Layout from "../components/layout"
 import Head from "next/head"
-import Post from "../interfaces/post"
+import PostPreview from "../components/post-preview"
+import { Post } from "../types"
+import Container from "../components/container"
 
 type Props = {
   allPosts: Post[]
 }
 
 export default function Index({ allPosts }: Props) {
-  const heroPost = allPosts[0]
-  const morePosts = allPosts.slice(1)
+  if (!allPosts) return <div>loading...</div>
+
   return (
-    <>
-      <Layout>
-        <Head>
-          <title>Manu Morante's blog</title>
-        </Head>
-        <Container>
-          <Intro />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
+    <Layout>
+      <Head>
+        <title>The dev stories of Manu Morante</title>
+      </Head>
+      <Container>
+        <section className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
+          {allPosts.map((post) => (
+            <PostPreview
+              key={post.slug}
+              title={post.title}
+              coverImage={post.coverImage}
+              date={post.date}
+              slug={post.slug}
+              excerpt={post.excerpt}
             />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </Container>
-      </Layout>
-    </>
+          ))}
+        </section>
+      </Container>
+    </Layout>
   )
 }
 
@@ -43,7 +40,6 @@ export const getStaticProps = async () => {
     "title",
     "date",
     "slug",
-    "author",
     "coverImage",
     "excerpt",
   ])
