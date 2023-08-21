@@ -10,25 +10,25 @@ type Props = {
 export default function PostHeader({ title, coverImage, date }: Props) {
   return (
     <>
-      <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
+      <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none mb-3">
         {title}
       </h1>
+
+      <div className="opacity-60 mb-4 text-lg">
+        <DateFormatter dateString={date} />
+      </div>
 
       {coverImage && (
         <Image
           src={coverImage}
           alt={`Cover Image for ${title}`}
-          className={"w-full h-full max-h-52 object-cover rounded-xl mb-20"}
+          className={
+            "w-full h-full max-h-52 object-cover rounded-xl mb-4 sm:mb-20"
+          }
           width={500}
           height={500}
         />
       )}
-
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-6 text-lg">
-          <DateFormatter dateString={date} />
-        </div>
-      </div>
     </>
   )
 }

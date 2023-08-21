@@ -1,11 +1,7 @@
 import { parseISO, format } from "date-fns"
 import { es } from "date-fns/locale"
 
-type Props = {
-  dateString: string
-}
-
-const DateFormatter = ({ dateString }: Props) => {
+export default function DateFormatter({ dateString }: { dateString: string }) {
   const date = parseISO(dateString)
   return (
     <time dateTime={dateString}>
@@ -13,5 +9,3 @@ const DateFormatter = ({ dateString }: Props) => {
     </time>
   )
 }
-
-export default DateFormatter

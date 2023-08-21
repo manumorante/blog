@@ -10,7 +10,7 @@ export default function Header() {
         </Link>
       </h1>
       <h4 className="text-center md:text-left text-lg opacity-60 mt-5 md:pl-8">
-        Somewhere I had to put my thoughts.
+        Sobre lo que voy haciendo
       </h4>
     </section>
   )

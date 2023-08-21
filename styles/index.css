@@ -11,4 +11,22 @@ body {
   .Container {
     @apply w-full max-w-4xl mx-auto px-8;
   }
+  .post-body-markdown {
+    @apply text-lg leading-relaxed;
+  }
+
+  .post-body-markdown p,
+  .post-body-markdown ul,
+  .post-body-markdown ol,
+  .post-body-markdown blockquote {
+    @apply my-6;
+  }
+
+  .post-body-markdown h2 {
+    @apply text-3xl font-bold mt-12 mb-4 leading-snug;
+  }
+
+  .post-body-markdown h3 {
+    @apply text-2xl font-bold mt-8 mb-4 leading-snug;
+  }
 }
