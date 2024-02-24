@@ -1,12 +1,12 @@
 import { data } from "@/data"
 import Head from "next/head"
-import { Footer, Header } from "@/components"
+import { PageFooter, PageHeader } from "@/components"
 
 type Props = {
   children: React.ReactNode
 }
 
-const Layout = ({ children }: Props) => {
+export default function Page({ children }: Props) {
   return (
     <>
       <Head>
@@ -14,11 +14,9 @@ const Layout = ({ children }: Props) => {
         <meta name="description" content={data.slogan} />
       </Head>
 
-      <Header />
+      <PageHeader />
       <main className="container">{children}</main>
-      <Footer />
+      <PageFooter />
     </>
   )
 }
-
-export default Layout

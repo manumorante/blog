@@ -1,6 +1,6 @@
 import { data } from "@/data"
 
-export default function Footer() {
+export default function LayoutFooter() {
   return (
     <footer className="Footer mt-24">
       <div className="container py-28 grid place-content-center">

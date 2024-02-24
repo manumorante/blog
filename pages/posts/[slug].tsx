@@ -5,7 +5,7 @@ import { getPostBySlug, getAllPosts } from "@/lib/api"
 import markdownToHtml from "@/lib/markdownToHtml"
 import ErrorPage from "next/error"
 import Head from "next/head"
-import { Layout, PostBody, PostHeader } from "@/components"
+import { Page, PostBody, PostHeader } from "@/components"
 
 export default function Post({ post }: { post: Post }) {
   const router = useRouter()
@@ -31,12 +31,12 @@ export default function Post({ post }: { post: Post }) {
         )}
       </Head>
 
-      <Layout>
+      <Page>
         <article className="Post">
           <PostHeader post={post} />
           <PostBody post={post} />
         </article>
-      </Layout>
+      </Page>
     </>
   )
 }

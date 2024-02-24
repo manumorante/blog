@@ -2,7 +2,7 @@ import { data } from "@/data"
 import { Post } from "@/types"
 import { getAllPosts, getAllCategories } from "@/lib/api"
 import Head from "next/head"
-import { Layout, PostPreview } from "@/components"
+import { Page, PostPreview } from "@/components"
 
 export default function Index({
   allPosts,
@@ -19,7 +19,7 @@ export default function Index({
         <title>{`${data.author} - ${data.slogan}`}</title>
       </Head>
 
-      <Layout>
+      <Page>
         <div className="PostList flex flex-col gap-20">
           {allPosts.map((post) => (
             <PostPreview key={post.slug} post={post} />
@@ -36,7 +36,7 @@ export default function Index({
             </div>
           </div>
         </div>
-      </Layout>
+      </Page>
     </>
   )
 }
