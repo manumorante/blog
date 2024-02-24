@@ -1,8 +1,8 @@
-import { getAllPosts } from "../lib/api"
-import Layout from "../components/layout"
+import { getAllPosts } from "@/lib/api"
 import Head from "next/head"
-import PostPreview from "../components/post-preview"
-import { Post } from "../types"
+import Layout from "@/components/layout"
+import PostPreview from "@/components/post-preview"
+import { Post } from "@/types"
 
 export default function Index({ allPosts }: { allPosts: Post[] }) {
   if (!allPosts) return <div>loading...</div>

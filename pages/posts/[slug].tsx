@@ -1,12 +1,12 @@
 import { useRouter } from "next/router"
 import ErrorPage from "next/error"
-import PostBody from "../../components/post-body"
-import PostHeader from "../../components/post-header"
-import Layout from "../../components/layout"
-import { getPostBySlug, getAllPosts } from "../../lib/api"
+import PostBody from "@/components/post-body"
+import PostHeader from "@/components/post-header"
+import Layout from "@/components/layout"
+import { getPostBySlug, getAllPosts } from "@/lib/api"
 import Head from "next/head"
-import markdownToHtml from "../../lib/markdownToHtml"
-import { Post } from "../../types"
+import markdownToHtml from "@/lib/markdownToHtml"
+import { Post } from "@/types"
 
 export default function Post({ post }: { post: Post }) {
   const router = useRouter()
