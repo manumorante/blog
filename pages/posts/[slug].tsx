@@ -1,16 +1,15 @@
-import { useRouter } from "next/router"
-import ErrorPage from "next/error"
-import PostBody from "@/components/post-body"
-import PostHeader from "@/components/post-header"
-import Layout from "@/components/layout"
-import { getPostBySlug, getAllPosts } from "@/lib/api"
-import Head from "next/head"
-import markdownToHtml from "@/lib/markdownToHtml"
+import { data } from "@/data"
 import { Post } from "@/types"
+import { useRouter } from "next/router"
+import { getPostBySlug, getAllPosts } from "@/lib/api"
+import markdownToHtml from "@/lib/markdownToHtml"
+import ErrorPage from "next/error"
+import Head from "next/head"
+import { Layout, PostBody, PostHeader } from "@/components"
 
 export default function Post({ post }: { post: Post }) {
   const router = useRouter()
-  const title = `${post.title} | Manu Morante`
+  const title = `${post.title} | ${data.author}`
 
   // Error 404
   if (!router.isFallback && !post?.slug) {
@@ -26,19 +25,16 @@ export default function Post({ post }: { post: Post }) {
     <>
       <Head>
         <title>{title}</title>
+        <meta property="og:description" content={post.excerpt} />
         {post.ogImage?.url && (
           <meta property="og:image" content={post.ogImage.url} />
         )}
       </Head>
 
       <Layout>
-        <article className="mb-32">
-          <PostHeader
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-          />
-          <PostBody content={post.content} />
+        <article className="Post">
+          <PostHeader post={post} />
+          <PostBody post={post} />
         </article>
       </Layout>
     </>

@@ -1,46 +1,58 @@
-import { getAllPosts } from "@/lib/api"
-import Head from "next/head"
-import Layout from "@/components/layout"
-import PostPreview from "@/components/post-preview"
+import { data } from "@/data"
 import { Post } from "@/types"
+import { getAllPosts, getAllCategories } from "@/lib/api"
+import Head from "next/head"
+import { Layout, PostPreview } from "@/components"
 
-export default function Index({ allPosts }: { allPosts: Post[] }) {
+export default function Index({
+  allPosts,
+  allCategories,
+}: {
+  allPosts: Post[]
+  allCategories: string[]
+}) {
   if (!allPosts) return <div>loading...</div>
 
   return (
     <>
       <Head>
-        <title>The dev stories of Manu Morante</title>
+        <title>{`${data.author} - ${data.slogan}`}</title>
       </Head>
 
       <Layout>
-        <section className="flex flex-col gap-24">
+        <div className="PostList flex flex-col gap-20">
           {allPosts.map((post) => (
-            <PostPreview
-              key={post.slug}
-              title={post.title}
-              coverImage={post.coverImage}
-              date={post.date}
-              slug={post.slug}
-              excerpt={post.excerpt}
-            />
+            <PostPreview key={post.slug} post={post} />
           ))}
-        </section>
+
+          <div className="opacity-40">
+            <h4 className="text-xl font-medium">Todas las categorias</h4>
+            <div className="divide-x space-x-4">
+              {allCategories.map((category) => (
+                <span className="" key={category}>
+                  {category}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </Layout>
     </>
   )
 }
 
 export const getStaticProps = async () => {
+  const allCategories = getAllCategories()
   const allPosts = getAllPosts([
     "title",
     "date",
+    "category",
     "slug",
     "coverImage",
     "excerpt",
   ])
 
   return {
-    props: { allPosts },
+    props: { allPosts, allCategories },
   }
 }
