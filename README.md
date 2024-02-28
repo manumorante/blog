@@ -20,6 +20,8 @@ category: "Main"
 
 Se puede usar la extensión de Raycast [markdown-blog](https://www.raycast.com/pyronaur/markdown-blog) para así ver de un vistazo la carpeta de post `posts` y tener acceso a otra de `drafts`.
 
+Hay una plantilla que se abre al comentar un nuevo drafts en `data/drafts/.template.md`. Más info sobre su uso en la web de la extensión.
+
 ## Tecnologías
 
 Partiendo como base de una tamplate de Next pública.

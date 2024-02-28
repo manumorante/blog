@@ -4,7 +4,7 @@ export type Post = {
   date: string
   category?: string
   coverImage?: string
-  excerpt?: string
+  summary?: string
   ogImage?: {
     url: string
   }

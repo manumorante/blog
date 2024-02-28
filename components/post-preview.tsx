@@ -9,7 +9,7 @@ export default function PostPreview({ post }: { post: Post }) {
   const coverImage = post.coverImage
   const date = post.date
   const category = post.category ? post.category : config.categoryDefault
-  const excerpt = post.excerpt
+  const summary = post.summary
   const url = `/posts/${post.slug}`
 
   return (
@@ -25,7 +25,7 @@ export default function PostPreview({ post }: { post: Post }) {
           {category} - <DateFormatter dateString={date} />
         </div>
 
-        <p className="text-xl leading-relaxed">{excerpt}</p>
+        <p className="text-xl leading-relaxed">{summary}</p>
       </div>
 
       {coverImage && (

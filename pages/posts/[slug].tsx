@@ -25,7 +25,7 @@ export default function Post({ post }: { post: Post }) {
     <>
       <Head>
         <title>{title}</title>
-        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:description" content={post.summary} />
         {post.ogImage?.url && (
           <meta property="og:image" content={post.ogImage.url} />
         )}
