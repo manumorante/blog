@@ -5,7 +5,7 @@ import { getPostBySlug, getAllPosts } from "@/lib/api"
 import markdownToHtml from "@/lib/markdownToHtml"
 import ErrorPage from "next/error"
 import Head from "next/head"
-import { Page, PostBody, PostHeader } from "@/components"
+import { Page, PostHeader, PostBody, PostFooter  } from "@/components"
 
 export default function Post({ post }: { post: Post }) {
   const router = useRouter()
@@ -35,6 +35,7 @@ export default function Post({ post }: { post: Post }) {
         <article className="Post">
           <PostHeader post={post} />
           <PostBody post={post} />
+          <PostFooter post={post} />
         </article>
       </Page>
     </>
@@ -50,11 +51,12 @@ type Params = {
 export async function getStaticProps({ params }: Params) {
   const post = getPostBySlug(params.slug, [
     "title",
+    "summary",
     "date",
     "slug",
     "content",
+    "cover",
     "ogImage",
-    "coverImage",
   ])
   const content = await markdownToHtml(post.content || "")
 

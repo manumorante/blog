@@ -1,7 +1,8 @@
 ---
-title: "Lo mucho que me gusta Raycast"
-excerpt: "Creando varias extensinoes con Raycast"
+title: "Que me gusta Raycast y que poco que me quejo"
+summary: "Un amor casi en solitario"
 date: "2024-02-24"
+cover: "/git-commands.png"
 ---
 
 Ya tengo una publicada y me hace bastante ilusión que mucha gente la use.

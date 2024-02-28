@@ -3,7 +3,7 @@ export type Post = {
   title: string
   date: string
   category?: string
-  coverImage?: string
+  cover?: string
   summary?: string
   ogImage?: {
     url: string

@@ -6,7 +6,7 @@ import { Post } from "@/types"
 
 export default function PostPreview({ post }: { post: Post }) {
   const title = post.title
-  const coverImage = post.coverImage
+  const cover = post.cover
   const date = post.date
   const category = post.category ? post.category : config.categoryDefault
   const summary = post.summary
@@ -28,11 +28,11 @@ export default function PostPreview({ post }: { post: Post }) {
         <p className="text-xl leading-relaxed">{summary}</p>
       </div>
 
-      {coverImage && (
+      {cover && (
         <div className="hidden md:block bg-neutral-400/50 rounded-xl max-h-52">
           <Link as={url} href="/posts/[slug]">
             <Image
-              src={coverImage}
+              src={cover}
               alt={`Cover Image for ${title}`}
               className={"w-full h-full object-cover rounded-xl"}
               width={500}

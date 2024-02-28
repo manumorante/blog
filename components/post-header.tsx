@@ -1,30 +1,27 @@
-import { config } from "@/config"
 import Image from "next/image"
-import { DateFormatter } from "@/components"
 import { Post } from "@/types"
 
 export default function PostHeader({ post }: { post: Post }) {
-  const category = post.category ? post.category : config.categoryDefault
   return (
     <>
-      <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none mb-3">
+      {post.cover && (
+        <Image
+          src={post.cover}
+          alt={`Cover Image for ${post.title}`}
+          className={"w-full h-full object-cover rounded-xl mb-4 sm:mb-10"}
+          width={2000}
+          height={1250}
+        />
+      )}
+
+      <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter leading-none mb-3">
         {post.title}
       </h1>
 
-      <div className="opacity-60 mb-4 text-lg">
-        {category} - <DateFormatter dateString={post.date} />
-      </div>
-
-      {post.coverImage && (
-        <Image
-          src={post.coverImage}
-          alt={`Cover Image for ${post.title}`}
-          className={
-            "w-full h-full max-h-52 object-cover rounded-xl mb-4 sm:mb-20"
-          }
-          width={500}
-          height={500}
-        />
+      {post.summary && (
+        <div className="text-2xl lg:text-3xl opacity-60 font-normal leading-none mb-3">
+          {post.summary}
+        </div>
       )}
     </>
   )
