@@ -1,4 +1,4 @@
-import { data } from "@/data"
+import { config } from "@/config"
 import { Post } from "@/types"
 import { getAllPosts, getAllCategories } from "@/lib/api"
 import Head from "next/head"
@@ -16,7 +16,7 @@ export default function Index({
   return (
     <>
       <Head>
-        <title>{`${data.author} - ${data.slogan}`}</title>
+        <title>{`${config.author} - ${config.slogan}`}</title>
       </Head>
 
       <Page>

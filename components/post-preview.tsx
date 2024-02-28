@@ -1,4 +1,4 @@
-import { data } from "@/data"
+import { config } from "@/config"
 import Link from "next/link"
 import Image from "next/image"
 import { DateFormatter } from "@/components"
@@ -8,7 +8,7 @@ export default function PostPreview({ post }: { post: Post }) {
   const title = post.title
   const coverImage = post.coverImage
   const date = post.date
-  const category = post.category ? post.category : data.categoryDefault
+  const category = post.category ? post.category : config.categoryDefault
   const excerpt = post.excerpt
   const url = `/posts/${post.slug}`
 

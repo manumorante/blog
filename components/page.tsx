@@ -1,4 +1,4 @@
-import { data } from "@/data"
+import { config } from "@/config"
 import Head from "next/head"
 import { PageFooter, PageHeader } from "@/components"
 
@@ -11,7 +11,7 @@ export default function Page({ children }: Props) {
     <>
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
-        <meta name="description" content={data.slogan} />
+        <meta name="description" content={config.slogan} />
       </Head>
 
       <PageHeader />

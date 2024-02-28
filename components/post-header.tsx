@@ -1,10 +1,10 @@
-import { data } from "@/data"
+import { config } from "@/config"
 import Image from "next/image"
 import { DateFormatter } from "@/components"
 import { Post } from "@/types"
 
 export default function PostHeader({ post }: { post: Post }) {
-  const category = post.category ? post.category : data.categoryDefault
+  const category = post.category ? post.category : config.categoryDefault
   return (
     <>
       <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none mb-3">

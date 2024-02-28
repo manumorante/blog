@@ -1,4 +1,4 @@
-import { data } from "@/data"
+import { config } from "@/config"
 import { Post } from "@/types"
 import { useRouter } from "next/router"
 import { getPostBySlug, getAllPosts } from "@/lib/api"
@@ -9,7 +9,7 @@ import { Page, PostBody, PostHeader } from "@/components"
 
 export default function Post({ post }: { post: Post }) {
   const router = useRouter()
-  const title = `${post.title} | ${data.author}`
+  const title = `${post.title} | ${config.author}`
 
   // Error 404
   if (!router.isFallback && !post?.slug) {
