@@ -10,7 +10,7 @@ export default function LayoutHeader() {
           <span>{config.author.b}</span>
         </Link>
       </h1>
-      <h4 className="text-center lg:text-left text-lg opacity-60 mt-5 lg:pl-8">
+      <h4 className="text-center lg:text-left text-lg opacity-60 lg:pl-8">
         {config.slogan}
       </h4>
     </section>
