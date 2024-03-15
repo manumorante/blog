@@ -16,7 +16,7 @@ export default function Index({
   return (
     <>
       <Head>
-        <title>{`${config.author} - ${config.slogan}`}</title>
+        <title>{`${config.author.name} - ${config.slogan}`}</title>
       </Head>
 
       <Page>

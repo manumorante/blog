@@ -7,6 +7,10 @@
     @apply text-xl leading-relaxed;
   }
 
+  .post-body-markdown a {
+    @apply text-sky-700;
+  }
+
   .post-body-markdown p,
   .post-body-markdown ul,
   .post-body-markdown ol,
